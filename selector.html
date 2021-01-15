@@ -1,0 +1,57 @@
+<body class="flex justify-center items-center bg-purple-700">
+  <!-- HTML expanding (Emmet):
+    - type html:5 and press Tab;
+    - type div>h1#header and press Tab;
+
+    
+  -->
+  
+  
+<table>
+    <tr><td>
+        <select name="category">
+      <option value="Economic">Economic</option>
+      <option value="Social">Social</option>
+      <option value="IT">IT</option>
+      </select>
+    </td></tr>
+    <tr><td>
+        <select name="asset" onchange="gotoSection(this.value)" >
+      <option value="Embankment">Embankment</option>
+      <option value="Tunnels">Tunnels</option>
+      <option value="Bridges">Bridges</option>
+    </select>
+    </td></tr>
+</table>
+
+    
+    
+
+
+
+    
+ <script>
+
+     const assets = {"Economic":[{value:"",desc:"Embankment"},{value:"https://datastudio.google.com/u/1/reporting/8a4c9439-e7e6-48d9-89d8-3896cc3d7f90/page/WY0uB",desc:"Tunnels"},{value:"",desc:"Bridges"}],
+             "Social":[{value:"",desc:"Hospitals"},{value:"https://datastudio.google.com/u/1/reporting/8a4c9439-e7e6-48d9-89d8-3896cc3d7f90/page/31qwB",desc:"Prisons"},{value:"",desc:"Accommodation"}],
+             "IT":[{value:"",desc:"Transformation"},{value:"",desc:"Digital"},{value:"",desc:"Network"}]}
+
+    
+    
+     function gotoSection(cururl) { 
+        if(cururl){
+         window.location.assign( cururl ); 
+        }
+     }
+     
+     
+    const asset = document.querySelector('[name=asset]');
+    
+     document.querySelector('[name=category]').addEventListener('change', function(e) {
+         asset.innerHTML = assets[this.value].reduce((acc, elem) => `${acc}<option value="${elem.value}">${elem.desc}</option>`, "");
+     });
+     
+</script> 
+
+
+</body>
